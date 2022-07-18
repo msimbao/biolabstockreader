@@ -1,3 +1,3 @@
-# Biolab Beeminder
+# Stock Reader
 
-Bee to Remind Biolab Members to Check their Microsoft Teams Account
+QR Code scanning system to quickly add/subtract stocks in biolab
