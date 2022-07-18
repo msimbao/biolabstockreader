@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>Hello World!</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Setup the webpage's stylesheet -->
+
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <!-- Import the webpage's javascript file -->
+    <script src="/public/js/script.js" ></script>
+
+    <style>
+
+    :root {
+        --primary-bg-color: hsl(249, 94%, 69%);
+        --bg-darker-5: hsl(249, 61%, 57%);
+        --bg-darker-10: hsl(249, 47%, 48%);
+        --bg-darker-12: hsl(249, 45%, 39%);
+        --bg-darker-15: hsl(250, 42%, 26%);
+        --bg-lighter: hsl(249, 68%, 81%);
+        --primary-dark: #262344;
+        --primary-grey: #F4F5F8;
+        --secondary-orange: #FE9C7E;
+        --secondary-red: #F16D54;
+        --secondary-yellow: #FBDE3A;
+        --secondary-blue: #5043D1;
+        --secondary-lightblue: #8BB7FC;
+    }
+        body{
+            font-size:90px;
+            text-align:center;
+            font-family:Arial, Helvetica, sans-serif;
+            font-variant: small-caps;
+        }
+
+        ul{
+            list-style-type:none;
+        }
+
+        li{
+            border-radius:15px;
+            background:#8BB7FC;
+            padding:5px;
+            margin:5px;
+        }
+
+    button {
+    width: 100%;
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 18pt !important;
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    background: var(--primary-bg-color) !important;
+    border: 2px solid transparent;
+    box-shadow: 0px 4px 8px var(--bg-lighter);
+    line-height: initial !important;
+    min-width: 82px;
+    text-transform: none;
+    height: initial;
+    font-weight: 600;
+    letter-spacing: initial;
+    text-shadow: none;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+#container{
+    width:100%;
+}
+    </style>
+    <!-- Setup the Webpage's Javascript file -->
+    <script>
+        
+        var id=866;
+        let urlString = window.location.href;
+        let paramString = urlString.split('?')[1];
+        let queryString = new URLSearchParams(paramString);
+        for(let pair of queryString.entries()) {
+            console.log("Key is:" + pair[0]);
+            console.log("Value is:" + pair[1]);
+            id = pair[1] 
+        }
+        console.log(id);
+
+        $.post( "/read?id=" + id, function( data ) {
+    $( "#id" ).html( data.id );
+    $( "#name" ).html( data.name );
+    $( "#storage" ).html( data.storage.name );
+    $( "#weight" ).html( data.weight + ' ' + data.weight_unit.name );
+  });
+
+  function makePUTrequest() {
+
+        var currentWeight = document.getElementById("weight").innerHTML
+        currentWeight = currentWeight.split(" ")[0]
+        // console.log(currentWeight);
+        var amount = document.getElementById("amount").value;
+        var leftOverAmount = currentWeight - amount;
+        
+        $.ajax({
+            url: '/write?id=' + id + '&amount=' + leftOverAmount,
+            type: 'PUT',
+            success: function (result) {
+                console.log(result)
+                swal("There is " + leftOverAmount + "left");
+            }
+        });
+    }
+
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <ul>
+        <!-- <li>Stock ID: <p id="id">Stock ID</p></li> -->
+        <li>Stock Name: <p id="name">Stock Name</p></li></li>
+        <li>Stock Location: <p id="storage">Stock Name</p></li></li>
+        <li>Current Amount: <p id="weight">Stock ID</p></li>
+        <li>Action <p><select>
+                    <option>Subtract</option>
+                    <option>Add</option>
+                </select></p>
+        </li>
+        <li>Amount used/added <input id="amount" type="text" placeholder="how much you will use/add"></li>
+        <li>      <button onclick="makePUTrequest()">Submit</button></li>
+      </ul>
+    </div>
+  
+    
+  </body>
+</html>

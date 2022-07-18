@@ -1,2 +1,3 @@
-# biolabstockreader
-QR Code scanning system to quickly edit stocks and supplies in Biolab
+# Biolab Beeminder
+
+Bee to Remind Biolab Members to Check their Microsoft Teams Account
