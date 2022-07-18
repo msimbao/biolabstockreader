@@ -9,14 +9,10 @@ Main Server File for running the flask app.
 # Import Third Party Modules
 
 import os
-import json
-from flask import Flask, request, render_template, jsonify, Response
+from flask import Flask, request, render_template
 from flask_cors import CORS
-import urllib.request
-import urllib.error
 import requests
   
-
 apiToken = "ea547439ae2aad787c4c84bc8d32a4e13d423ff2"
 
 
@@ -38,8 +34,6 @@ def homepage():
     Returns: 
         render template for index.html
     """
-
-
     return render_template('index.html')
 
 
@@ -75,7 +69,7 @@ def read():
 
     return data
 
-@app.route('/write', methods=['GET', 'POST','PUT'])
+@app.route('/write', methods=['GET','POST','PUT'])
 def write():
     """
     Simple endpoint to edit the chosen stock and change it's amount
