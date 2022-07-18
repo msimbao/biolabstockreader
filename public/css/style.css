@@ -1,3 +1,147 @@
-body{
-    background:black;
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display');
+
+    :root {
+        --primary-bg-color: hsl(249, 94%, 69%);
+        --bg-darker-5: hsl(249, 61%, 57%);
+        --bg-darker-10: hsl(249, 47%, 48%);
+        --bg-darker-12: hsl(249, 45%, 39%);
+        --bg-darker-15: hsl(250, 42%, 26%);
+        --bg-lighter: hsl(249, 68%, 81%);
+        --primary-dark: #262344;
+        --primary-grey: #F4F5F8;
+        --secondary-orange: #FE9C7E;
+        --secondary-red: #F16D54;
+        --secondary-yellow: #FBDE3A;
+        --secondary-blue: #5043D1;
+        --secondary-lightblue: #8BB7FC;
+    }
+        body{
+            font-size:90px;
+            text-align:center;
+            font-family:'Red Hat Display';
+            /* font-variant: small-caps; */
+        }
+
+        ul{
+            list-style-type:none;
+        }
+
+        .item{
+            border-radius:25px;
+            background:var(--bg-lighter);
+            margin:5px;
+            box-shadow: 0 0 30px 0px #d1d1d1;
+        }
+
+        .item h4{
+            /* padding:5px; */
+            margin:15px;
+        }
+
+        .sub-item{
+            border-radius:0px 0px 25px 25px;
+            color:white;
+            background:var(--primary-dark);
+            padding:30px;
+            margin:0px;
+            font-size:40px;
+        }
+
+    button {
+    width: 100%;
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 25pt !important;
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    background: var(--primary-bg-color) !important;
+    border: 2px solid transparent;
+    box-shadow: 0px 4px 8px var(--bg-lighter);
+    line-height: initial !important;
+    min-width: 82px;
+    text-transform: none;
+    height: initial;
+    font-weight: 600;
+    letter-spacing: initial;
+    text-shadow: none;
+    transition: all 0.2s;
+    font-family: inherit;
 }
+
+#container{
+    width:80%;
+    margin:auto;
+}
+
+
+
+select, input {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 80%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    color:#262344;
+    text-align:center;
+  }
+
+  #selectSection, #inputSection, option{
+    background:#FE9C7E;
+  }
+
+  option{
+    font-size:10px;
+    padding:20px;
+    width:80%;
+  }
+
+  option:active{
+    background:#7E68FA;
+  }
+
+  .gradient {
+    /* font-size: 72px; */
+    background: -webkit-linear-gradient(#7E68FA,#7E68FA,#F16D54,#F16D54,#FBDE3A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+
+  .swal-title {
+    margin: 0px;
+    font-size: 90px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+    margin-bottom: 28px;
+  }
+
+  .swal-text{
+    font-size:60px;
+    padding:10px;
+  }
+
+  .swal-text {
+    padding: 17px;
+    display: block;
+    margin: 22px;
+    text-align: center;
+    color: #61534e;
+  }
+
+  .swal-footer {
+    background-color: rgb(245, 248, 250);
+    margin-top: 32px;
+    border-top: 1px solid #E9EEF1;
+    overflow: hidden;
+  }
+
+  .swal-overlay {
+    background-color: #FBDE3A;
+  }
