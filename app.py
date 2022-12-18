@@ -37,6 +37,54 @@ def homepage():
     return render_template('index.html')
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """Simple Route to get authorization from LabGuru using user credentials
+
+    Returns:
+        String: Authorization Token 
+    """
+    email = request.args['email']
+    password = request.args['password']
+
+    # defining a params dict for the parameters to be sent to the API
+    PARAMS = {'login': email, 'password': password}
+
+    # defining a URL to call
+    URL = "https://my.labguru.com/api/v1/sessions"
+
+    # sending get request and saving the response as response object
+    r = requests.post(url = URL, params = PARAMS)
+    
+    # extracting data in json format
+    data = r.json()
+    # print(data)
+    return data
+
+@app.route('/loadBox', methods=['GET', 'POST'])
+def loadBox():
+    """Simple Route to gather consumables from a LabGuru Box
+
+    Returns:
+        JSON: Box Data
+    """
+    token = request.args['token']
+    boxId = request.args['boxId']
+
+    # defining a params dict for the parameters to be sent to the API
+    PARAMS = {'token': token}
+
+    # defining a URL to call
+    URL = "https://my.labguru.com/api/v1/boxes/" + boxId
+
+    # sending get request and saving the response as response object
+    r = requests.get(url = URL, params = PARAMS)
+    
+    # extracting data in json format
+    data = r.json()
+    # print(data)
+    return data
+
 @app.route('/read', methods=['GET', 'POST'])
 def read():
     """

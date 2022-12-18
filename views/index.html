@@ -4,21 +4,48 @@
 
     <title>Stock Editor</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <!-- Setup the webpage's stylesheet -->
     <link rel="stylesheet" href="/public/css/style.css" />
     <!-- Import the webpage's javascript file -->
-    <script src="/public/js/script.js" ></script>
     <!-- Setup the Webpage's Javascript file -->
+
 
   </head>
   <body>
+
+<!--
+==========================================        
+____    ____  __    __   _______ 
+\   \  /   / |  |  |  | |   ____|
+ \   \/   /  |  |  |  | |  |__   
+  \      /   |  |  |  | |   __|  
+   \    /    |  `--'  | |  |____ 
+    \__/      \______/  |_______|
+==========================================
+-->
+
+    <div id="app">
+
+        {{ message }}
+
+        <span v-bind:title="message">
+            Hover your mouse over me for a few seconds
+            to see my dynamically bound title!
+          </span>
+          
     <div id="container">
+
+    
+        <input id="emailInput" type="text" placeholder="Email">
+        <input id="passwordInput" type="password" placeholder="Password">
+        <button id="loginSubmit" type="button" onclick="loginSubmit();">Submit</button>
+
         <h3>Stock 
             <b class="gradient">
-                Editor
+               
+
             </b>
         </h3>
         <!-- <div>Stock ID: <p id="id">Stock ID</p></div> -->
@@ -48,6 +75,13 @@
         </div>
     </div>
   
-    
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/public/js/script.js" ></script>
+
   </body>
+
+
 </html>
