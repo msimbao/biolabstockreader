@@ -1,34 +1,116 @@
+//API token Development: 2c13a8e789b51e487ea7e226de453aa082bba505
+
+Vue.component('todo-item', {
+    // The todo-item component now accepts a
+    // "prop", which is like a custom attribute.
+    // This prop is called todo.
+    props: ['todo'],
+    template: '<li>{{ todo.name }}</li>'
+  })
+
 var app = new Vue({
   el: '#app',
+  delimiters : ['[[', ']]'],
   data: {
-    message: 'Hello Vue!'
-  }
+    token: "" , // API Token For LabGuru
+    boxId: 37, // Box ID to parse from. Default is 37 for Critical Items
+    stocksList: [], //List of Stocks from chosen Storage Box
+  },
+  methods: {
+
+    loadBox: function(){
+
+        // $.post( "/loadBox?token=" + this.token + "&boxId=" + this.boxId, function( data ) {
+        //     console.log(data)
+
+        //     tempList = []
+        //     tempList = data.stocks
+
+        //     for (var item of tempList){
+        //         stocksList.append(item.stock)
+        //     }
+        //     // this.stocksList = data.stocks
+
+        //   });
+
+          $.post(
+            "/loadBox?" + $.param({ token: this.token, boxId: this.boxId }),
+            (data) => {
+
+            var tempList = []
+            tempList = data.stocks
+
+            for (var item of tempList){
+                this.stocksList.push(item.stock)
+            }
+            // this.stocksList = data.stocks
+            }
+          );
+    },
+
+    /**
+     * @name loginSubmit
+     * @brief Function to handle login
+     */
+
+    loginSubmit: function() {
+        var email = document.getElementById("emailInput").value;
+        var password = document.getElementById("passwordInput").value;
+
+          $.post(
+            "/login?" + $.param({ email: email, password: password }),
+            (data) => {
+            //Grab Authentication
+            console.log(data.token)
+            this.token = data.token
+
+            //Load Storage after getting Auth Token
+            this.loadBox()
+            }
+          );
+       
+    },
+
+    changeToken: function(){
+    
+        this.token = "2c13a8e789b51e487ea7e226de453aa082bba505"
+    }
+
+
+  },
+  created: function () {
+    this.token = "Hello Worlds"
+  },
 })
 
-var token = ""
-var stocksList = []
-
-function loginSubmit(){
-    var email = document.getElementById("emailInput").value;
-    var password = document.getElementById("passwordInput").value;
-
-    $.post( "/login?email=" + email + "&password=" + password, function( data ) {
-        //Grab Authentication
-        token = data.token
-
-        //Load Storage after getting Auth Token
-        loadBox()
-      });
+function change(){
+    app.token = "2c13a8e789b51e487ea7e226de453aa082bba505"
 }
 
-function loadBox(){
-    var boxId = 37
+// var token = ""
+// var stocksList = []
 
-    $.post( "/loadBox?token=" + token + "&boxId=" + boxId, function( data ) {
-        console.log(data)
-        stocksList = data.stocks
-      });
-}
+// function loginSubmit(){
+//     var email = document.getElementById("emailInput").value;
+//     var password = document.getElementById("passwordInput").value;
+
+//     $.post( "/login?email=" + email + "&password=" + password, function( data ) {
+//         //Grab Authentication
+//         token = data.token
+
+//         //Load Storage after getting Auth Token
+//         loadBox()
+//       });
+// }
+
+// function loadBox(){
+//     var boxId = 37
+
+//     $.post( "/loadBox?token=" + token + "&boxId=" + boxId, function( data ) {
+//         console.log(data)
+//         stocksList = data.stocks
+//       });
+// }
 
 //         var id=866;
 //         let urlString = window.location.href;

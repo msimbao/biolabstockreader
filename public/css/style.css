@@ -71,9 +71,20 @@
     font-family: inherit;
 }
 
-#container{
-    width:80%;
+
+
+.container{
+    float:left;
+    width:50%;
     margin:auto;
+}
+
+#leftColumn{
+  width:30%;
+}
+
+#rightColumn{
+  width:70%;
 }
 
 
