@@ -27,11 +27,20 @@ ____    ____  __    __   _______
 -->
 
     <div id="app">
+
+        <div id="loginPanel">
+            <div id="loginForm">
+                <img src="/public/images/logo.png">
+                <input id="emailInput" type="text" placeholder="Email">
+                <input id="passwordInput" type="password" placeholder="Password">
+                <button id="loginSubmit" type="button" v-on:click="loginSubmit()">Submit</button>
+            </div>
+        </div>
+
+
     <div id="leftColumn" class="container">
     
-        <input id="emailInput" type="text" placeholder="Email">
-        <input id="passwordInput" type="password" placeholder="Password">
-        <button id="loginSubmit" type="button" v-on:click="loginSubmit()">Submit</button>
+
 
 
         <ol>

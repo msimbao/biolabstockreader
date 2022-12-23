@@ -19,7 +19,39 @@
             /* font-size:90px; */
             text-align:center;
             font-family:'Red Hat Display';
+            overflow:hidden;
             /* font-variant: small-caps; */
+        }
+
+        #loginPanel{
+          position:absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 99%;
+          height: 99%;
+          border-radius:50px;
+          box-shadow: 0 0 30px 0px #d1d1d1;
+          background-color:#F4F5F8;
+          text-align:center;
+          vertical-align: auto;
+          z-index:2;
+          /* display:none; */
+          /* padding:5%; */
+        }
+
+        #loginForm{
+          position:absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background:white;
+          padding:20px;
+          border-radius:50px;
+          height:500px;
+          width:700px;
+          padding-top:200px;
+          box-shadow: 0 0 30px 0px #d1d1d1;
         }
 
         ul{
@@ -48,10 +80,10 @@
         }
 
     button {
-    width: 100%;
-    padding: 20px;
+    width: 500px;
+    padding: 10px;
     border-radius: 50px;
-    font-size: 25pt !important;
+    /* font-size: 25pt !important; */
     text-align: center;
     color: #fff;
     display: inline-block;
@@ -96,7 +128,7 @@ select, input {
     border-radius:10px;
     padding: 0 1em 0 0;
     margin: 5px;
-    width: 80%;
+    width: 500px;
     font-family: inherit;
     font-size: inherit;
     cursor: inherit;
